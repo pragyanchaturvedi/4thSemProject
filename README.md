@@ -1,2 +1,3 @@
 # 4thSemProject
-A project of machine learning model which would predict price of Financial assets.
+A project of building a machine learning model which would predict price of Financial assets.
+
