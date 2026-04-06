@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Forecaster — Gold, Silver & NSE Stocks</title>
+    <meta name="description" content="ML-powered 6-month price predictions for Gold, Silver, Reliance & HDFC in INR">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="logo">📈</span>
+            <h1>Multi-Asset Financial Forecaster</h1>
+        </div>
+        <div class="nav-badge">ML-Powered • INR</div>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <h2>6-Month Price Predictions</h2>
+            <p>Ensemble ML models forecasting Gold, Silver, Reliance Industries & HDFC Bank — all in Indian Rupees.</p>
+        </section>
+
+        <div class="asset-grid">
+            <div class="asset-card" data-asset="Gold">
+                <div class="card-icon">🥇</div>
+                <h3>Gold</h3>
+                <p class="card-desc">International Gold in INR/oz</p>
+                <div class="card-price" id="price-Gold">—</div>
+                <button class="btn-predict" onclick="predict('Gold')">Generate Forecast</button>
+                <div class="card-loader" id="loader-Gold" style="display:none">
+                    <div class="spinner"></div>
+                    <span>Training models...</span>
+                </div>
+            </div>
+            <div class="asset-card" data-asset="Silver">
+                <div class="card-icon">🥈</div>
+                <h3>Silver</h3>
+                <p class="card-desc">International Silver in INR/oz</p>
+                <div class="card-price" id="price-Silver">—</div>
+                <button class="btn-predict" onclick="predict('Silver')">Generate Forecast</button>
+                <div class="card-loader" id="loader-Silver" style="display:none">
+                    <div class="spinner"></div>
+                    <span>Training models...</span>
+                </div>
+            </div>
+            <div class="asset-card" data-asset="Reliance">
+                <div class="card-icon">🏭</div>
+                <h3>Reliance</h3>
+                <p class="card-desc">Reliance Industries (NSE)</p>
+                <div class="card-price" id="price-Reliance">—</div>
+                <button class="btn-predict" onclick="predict('Reliance')">Generate Forecast</button>
+                <div class="card-loader" id="loader-Reliance" style="display:none">
+                    <div class="spinner"></div>
+                    <span>Training models...</span>
+                </div>
+            </div>
+            <div class="asset-card" data-asset="HDFC">
+                <div class="card-icon">🏦</div>
+                <h3>HDFC Bank</h3>
+                <p class="card-desc">HDFC Bank (NSE)</p>
+                <div class="card-price" id="price-HDFC">—</div>
+                <button class="btn-predict" onclick="predict('HDFC')">Generate Forecast</button>
+                <div class="card-loader" id="loader-HDFC" style="display:none">
+                    <div class="spinner"></div>
+                    <span>Training models...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart Section -->
+        <section class="chart-section" id="chart-section" style="display:none">
+            <div class="chart-header">
+                <h2 id="chart-title">Forecast</h2>
+                <div class="metrics-bar" id="metrics-bar"></div>
+            </div>
+            <div id="chart-container" class="chart-container"></div>
+            <div class="forecast-summary" id="forecast-summary"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Multi-Asset Financial Forecaster &mdash; Powered by scikit-learn, yfinance & Plotly</p>
+        <p class="disclaimer">⚠️ Predictions are for educational purposes only. Not financial advice.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

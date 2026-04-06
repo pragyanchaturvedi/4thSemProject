@@ -1,0 +1,204 @@
+/* Multi-Asset Financial Forecaster — Design System */
+:root {
+    --bg-primary: #0a0e17;
+    --bg-secondary: #111827;
+    --bg-card: #1a2235;
+    --bg-card-hover: #1e2a42;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --accent-gold: #f59e0b;
+    --accent-green: #10b981;
+    --accent-blue: #3b82f6;
+    --accent-purple: #8b5cf6;
+    --accent-red: #ef4444;
+    --border: #1e293b;
+    --radius: 12px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3);
+    --font: 'Inter', -apple-system, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+}
+.nav-brand { display: flex; align-items: center; gap: 0.75rem; }
+.nav-brand h1 { font-size: 1.25rem; font-weight: 600; }
+.logo { font-size: 1.5rem; }
+.nav-badge {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+/* Container */
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 2.5rem 0 2rem;
+}
+.hero h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+.hero p { color: var(--text-secondary); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+
+/* Asset Grid */
+.asset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
+}
+.asset-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+.asset-card:hover {
+    background: var(--bg-card-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+.card-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.asset-card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.25rem; }
+.card-desc { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem; }
+.card-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-green);
+    margin-bottom: 1.25rem;
+    min-height: 2rem;
+}
+
+/* Button */
+.btn-predict {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    color: var(--text-primary);
+    border: none;
+    padding: 0.7rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+}
+.btn-predict:hover { opacity: 0.9; transform: scale(1.02); }
+.btn-predict:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Loader */
+.card-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+.spinner {
+    width: 28px; height: 28px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent-blue);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Chart Section */
+.chart-section {
+    margin-top: 2.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+}
+.chart-header { margin-bottom: 1.5rem; }
+.chart-header h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; }
+.chart-container { width: 100%; min-height: 450px; }
+
+/* Metrics Bar */
+.metrics-bar {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.metric-chip {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+.metric-chip strong { color: var(--text-primary); }
+
+/* Forecast Summary */
+.forecast-summary {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+.summary-item {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+}
+.summary-label { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+.summary-value { font-size: 1.25rem; font-weight: 700; }
+.summary-value.up { color: var(--accent-green); }
+.summary-value.down { color: var(--accent-red); }
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+}
+.disclaimer { margin-top: 0.5rem; font-size: 0.75rem; color: var(--accent-gold); }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container { padding: 1rem; }
+    .hero h2 { font-size: 1.75rem; }
+    .navbar { padding: 0.75rem 1rem; }
+    .nav-brand h1 { font-size: 1rem; }
+}
